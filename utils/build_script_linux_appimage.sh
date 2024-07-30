@@ -57,13 +57,13 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-make -j2 daemon simplewallet connectivity_tool
+make -j8 daemon simplewallet connectivity_tool
 if [ $? -ne 0 ]; then
     echo "Failed to make!"
     exit 1
 fi
 
-make -j1 Zano
+make -j8 Zano
 if [ $? -ne 0 ]; then
     echo "Failed to make!"
     exit 1
@@ -105,14 +105,16 @@ if [ $? -ne 0 ]; then
     exit 1
 fi
 
-$LINUX_DEPLOY_QT ./Zano/usr/share/applications/Zano.desktop -qmake=$QT_PREFIX_PATH/bin/qmake
-if [ $? -ne 0 ]; then
-    echo "Failed to run linuxqtdeployment"
-    exit 1
-fi
+$LINUX_DEPLOY_QT ./Zano/usr/share/applications/Zano.desktop -qmake=$QT_PREFIX_PATH/bin/qmake -unsupported-bundle-everything -unsupported-allow-new-glibc
+#if [ $? -ne 0 ]; then
+#    echo "Failed to run linuxqtdeployment"
+#    exit 1
+#fi
 
 rm -f $prj_root/build/release/Zano/AppRun
 cp -Rv ../../utils/Zano_appimage_wrapper.sh $prj_root/build/release/Zano/AppRun
+
+cp /home/xnmo/Documents/crypto/zano/build/release/Zano/usr/share/icons/hicolor/256x256/apps/Zano.png /home/xnmo/Documents/crypto/zano/build/release/Zano/Zano.png
 
 package_filename=${ARCHIVE_NAME_PREFIX}${version_str}.AppImage
 

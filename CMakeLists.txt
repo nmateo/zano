@@ -67,6 +67,7 @@ enable_testing()
 set(OPENSSL_USE_STATIC_LIBS TRUE) # link statically
 find_package(OpenSSL REQUIRED)
 
+find_package(ZLIB REQUIRED)
 
 if(APPLE)
   set(CMAKE_OSX_DEPLOYMENT_TARGET 10.15)
@@ -258,7 +259,8 @@ elseif(NOT MSVC)
     set(Boost_LIBRARIES "${Boost_LIBRARIES};")
     if(STATIC) 
       message("NOTICE: Including static ICU libraries")  
-      set(Boost_LIBRARIES "${Boost_LIBRARIES};icui18n.a;icuuc.a;icudata.a;dl")
+      # set(Boost_LIBRARIES "${Boost_LIBRARIES};icui18n.a;icuuc.a;icudata.a;dl")
+      set(Boost_LIBRARIES "${Boost_LIBRARIES};dl")
     endif()
   endif()
 endif()

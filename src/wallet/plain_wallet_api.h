@@ -6,6 +6,7 @@
 #pragma once
 
 #include <string>
+#include <cstdint>
 #include "../common/error_codes.h"
 
 namespace plain_wallet
