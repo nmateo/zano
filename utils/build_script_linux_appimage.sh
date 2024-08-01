@@ -114,7 +114,7 @@ $LINUX_DEPLOY_QT ./Zano/usr/share/applications/Zano.desktop -qmake=$QT_PREFIX_PA
 rm -f $prj_root/build/release/Zano/AppRun
 cp -Rv ../../utils/Zano_appimage_wrapper.sh $prj_root/build/release/Zano/AppRun
 
-cp /home/xnmo/Documents/crypto/zano/build/release/Zano/usr/share/icons/hicolor/256x256/apps/Zano.png /home/xnmo/Documents/crypto/zano/build/release/Zano/Zano.png
+cp ./Zano/usr/share/icons/hicolor/256x256/apps/Zano.png ./Zano/Zano.png
 
 package_filename=${ARCHIVE_NAME_PREFIX}${version_str}.AppImage
 
